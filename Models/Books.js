@@ -5,5 +5,6 @@ var bookSchema = mongoose.Schema({
     coverImg: String,
     bookBody: String,
     views: Number,
+    Comment: [{type: mongoose.Schema.ObjectId, ref: 'Comment'}],
     
 })
