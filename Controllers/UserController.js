@@ -58,3 +58,11 @@ const sendMail = function(req, res) {
         // }
     // });
 }
+
+//get Subscriber
+exports.getSubscriber = function(req, res) {
+    Model.find({}, function(err, result) {
+        if(err) res.status(500).json({err: err});
+        res.status(200).json(result);
+    });
+}

@@ -2,7 +2,8 @@ const express = require('express');
 const router = express.Router();
 const userController = require('../Controllers/UserController');
 
-router.post('/', userController.addSubscriber);
+router.post('/add', userController.addSubscriber);
+router.get('/', userController.getSubscriber);
 // router.get('/mail', userController.sendMail);
 
 

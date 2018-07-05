@@ -16,3 +16,10 @@ exports.addCategory = function(req, res) {
         res.status(500).json({err: err});
     });
 }
+
+exports.getCategory = function(req, res) {
+    CategoryModel.find({}, function(err, result) {
+        if(err) res.status(500).json({err: err});
+        res.status(200).json(result);
+    });
+}
