@@ -1,5 +1,5 @@
 const mongoose = require('mongoose');
 
-var bookShema = mongoose.Shema({
-    
+var bookSchema = mongoose.Schema({
+    date: Date.now(),
 })

@@ -31,7 +31,16 @@ module.exports = transporter;
 
 
 
+const BookSchema = mongoose.Schema({
+    date: Date.now(),
+    coverImg: String,
+    body: String,
+    views: Number,
+    comments: [{ type: mongoose.Schema.Types.ObjectId, ref: 'Comment'}],
+    categoryId: [{ type: mongoose.Schema.Types.ObjectId, ref: 'Category'}]
+});
 
+module.exports = mongoose.model('Book', BookSchema);
 
 exports.sendMail = function(req, res) {
     // Model.find({}, '-_id -preferenceId -_v', function(err, users) {
