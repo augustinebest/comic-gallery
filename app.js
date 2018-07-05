@@ -10,7 +10,7 @@ const mailRoutes = require('./routes/mailRouter');
 
 //Connecting to the database
 mongoose.Promise = global.Promise;
-mongoose.connect('mongodb://localhost:27017/comic'); 
+mongoose.connect('mongodb://comic:group14scrum@ds125851.mlab.com:25851/comic'); 
 
 app.use(morgan('dev'));
 app.use(bodyparser.urlencoded({extended: false}));
