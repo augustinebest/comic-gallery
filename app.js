@@ -16,7 +16,7 @@ mongoose.connect('mongodb://comic:group14scrum@ds125851.mlab.com:25851/comic');
 app.use(morgan('dev'));
 app.use(bodyparser.urlencoded({extended: false}));
 app.use(bodyparser.json());
-
+app.use(cors());
 //CORS ERRORS
 app.use((req, res, next) => {
     res.header("Access-Control-Allow-Origin", "*");
