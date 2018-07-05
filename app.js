@@ -3,6 +3,7 @@ const app = express();
 const morgan = require('morgan');
 const bodyparser = require('body-parser');
 const mongoose = require('mongoose');
+const cors = require('cors');
 
 const userRoutes = require('./routes/user');
 const categoryRoutes = require('./routes/category');
@@ -27,6 +28,10 @@ app.use((req, res, next) => {
         return res.status(200).json({});
     }
     next();
+})
+
+app.get('/', function(req, res) {
+    res.send('<h1>Hello World11!</h1>');
 })
 
 // Routes which should handle requests
