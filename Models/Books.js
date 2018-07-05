@@ -9,3 +9,4 @@ var bookSchema = mongoose.Schema({
     categoryId: [{type: mongoose.Schema.ObjectId, ref: 'Category'}]
 });
 
+module.exports = mongoose.model('Book', bookSchema);
