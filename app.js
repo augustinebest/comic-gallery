@@ -9,14 +9,15 @@ const userRoutes = require('./routes/user');
 const categoryRoutes = require('./routes/category');
 const mailRoutes = require('./routes/mailRouter');
 const bookRoutes = require('./routes/book');
+const commentRoutes = require('./routes/comment');
 
 //Connecting to the database
 mongoose.Promise = global.Promise;
 //mlab connection
-mongoose.connect('mongodb://comic:group14scrum@ds125851.mlab.com:25851/comic'); 
+//mongoose.connect('mongodb://comic:group14scrum@ds125851.mlab.com:25851/comic'); 
 
 //localhost
-// mongoose.connect('mongodb://localhost:27017/comic');
+ mongoose.connect('mongodb://localhost:27017/comic');
 
 app.use(morgan('dev'));
 app.use(bodyparser.urlencoded({extended: false}));
@@ -45,6 +46,7 @@ app.use('/subscribe', userRoutes);
 app.use('/categories', categoryRoutes);
 app.use('/mail', mailRoutes);
 app.use('/book', bookRoutes);
+app.use('/comment',commentRoutes);
 
 app.use((req, res, next) => {
     const error = new Error('Not Found');
