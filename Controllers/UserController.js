@@ -11,9 +11,7 @@ const transporter = nodemailer.createTransport({
 })
 
 exports.addSubscriber = function(req, res) {
-    // res.status(200).json({message: 'Hello'});
-    // console.log('Hello');
-    // let id = {id: req.params.id};
+    
     var model = new Model ({
         // name: req.body.name,
         email: req.body.email,
@@ -28,23 +26,26 @@ exports.addSubscriber = function(req, res) {
         console.log(err);
         res.status(500).json({err: err});
     });
+    // res.json({message: 'Hello'});
+  
 }
 
 exports.deleteSubscriber = function(req, res) {
-    
+    const email = req.params.email;
+    Model.remove({email: email}, function(err) {
+        if(err) res.status(500).json({err: err, message: "There exists an error"});
+        res.status(200).json({message: "This User have unsubscribe"});
+    });
 }
 
 
 const sendMail = function(req, res) {
-    // Model.find({}, '-_id -preferenceId -_v', function(err, users) {
-        // if(err) res.json({err: err, message: 'error occurs'});
-        // for(user of users) {
             const mailOptions = {
                 from: 'comicgallery2018@gmail.com',
                 to: req.body.email,
                 subject: 'latest Update of comic',
                 html: `<h1>New Updates</h1>
-                <a href="#"><button style='background-color:red' onclick=>Unsubscribe</button></a>`
+                <a href="https://whispering-reaches-99821.herokuapp.com/unsubscribe/${req.body.email}"><button style='background-color:red' onclick=>Unsubscribe</button></a>`
             }
 
             transporter.sendMail(mailOptions, function (err) {
@@ -55,8 +56,7 @@ const sendMail = function(req, res) {
                     console.log('succesfully sent mail');
                 }
             });
-        // }
-    // });
+        
 }
 
 //get Subscriber

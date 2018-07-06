@@ -1,12 +1,14 @@
 const mongoose = require('mongoose');
 
 var bookSchema = mongoose.Schema({
-    date: Date.now(),
-    coverImg: String,
+    // date: Date.now(),
+    title: String,
     bookBody: String,
     views: Number,
-    comment: [{type: mongoose.Schema.ObjectId, ref: 'Comment'}],
-    categoryId: [{type: mongoose.Schema.ObjectId, ref: 'Category'}]
+    time: Date,
+    image: String,
+    category: [{type: mongoose.Schema.ObjectId, ref: 'Category'}],
+    comments: [{type: mongoose.Schema.ObjectId, ref: 'Comment'}]
 });
 
 module.exports = mongoose.model('Book', bookSchema);
