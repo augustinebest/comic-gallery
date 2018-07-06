@@ -32,7 +32,7 @@ router.post('/add', upload.single('image'), function(req, res, next) {
     });
 });
 
-// router.get('/id/:id', book.getBookById);
+router.get('/search/:id', book.getBookById);
 
 router.get('/', book.getAllBooks);
 module.exports = router;
