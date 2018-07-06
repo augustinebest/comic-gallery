@@ -11,7 +11,8 @@ exports.getBookById = function(req, res) {
 }
 
 exports.getAllBooks = function(req, res) {
-    Book.find({}, '-__v', function(err, data) {
+    // res.send('Yaya1122!');
+    Book.find({}, function(err, data) {
         if(err) res.status(404).json({err: err, message: 'Cannot get all books'});
         res.status(200).json(data);
     })
