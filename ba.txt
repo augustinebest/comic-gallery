@@ -26,6 +26,7 @@ exports.addSubscriber = function(req, res) {
         console.log(err);
         res.status(500).json({err: err});
     });
+    // res.json({message: 'Hello'});
   
 }
 
@@ -44,7 +45,7 @@ const sendMail = function(req, res) {
                 to: req.body.email,
                 subject: 'latest Update of comic',
                 html: `<h1>New Updates</h1>
-                <a href="https://whispering-reaches-99821.herokuapp.com/subscribe/unsubscribe/${req.body.email}"><button style='background-color:red' onclick=>Unsubscribe</button></a>`
+                <a href="https://whispering-reaches-99821.herokuapp.com/unsubscribe/${req.body.email}"><button style='background-color:red' onclick=>Unsubscribe</button></a>`
             }
 
             transporter.sendMail(mailOptions, function (err) {

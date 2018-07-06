@@ -19,7 +19,7 @@ router.post('/add', upload.single('image'), function(req, res, next) {
     console.log(req.file);
     const data = {
         title: req.body.title,
-        bookBody: req.body.coverImg,
+        bookBody: req.body.bookBody,
         views: 0,
         time: Date.now(),
         image: req.file.path,
