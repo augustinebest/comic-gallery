@@ -33,6 +33,8 @@ router.post('/add', upload.single('image'), function(req, res, next) {
 });
 
 router.get('/search/:id', book.getBookById);
-
+router.get('/find/:value', book.searchBook);
+router.get('/deleteBook/:id', book.deleteBook);
 router.get('/', book.getAllBooks);
+
 module.exports = router;

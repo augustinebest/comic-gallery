@@ -17,3 +17,25 @@ exports.getAllBooks = function(req, res) {
         res.status(200).json(data);
     })
 }
+
+exports.searchBook = function(req, res) {
+    const value = req.params.value;
+    // res.send(value);
+    Book.find({"title":{$regex: value, $options: "i"}}, function(err, books) {
+        if(err) res.json({err: err, message: 'this book cannot be found'});
+        res.json(books);
+    });
+}
+
+exports.deleteBook = function(req, res) {
+    const id = {_id: req.params.id};
+    Book.remove(id, function(err) {
+        if(err) res.json({err: err, message: 'this operation Failed!'});
+        res.json({message: 'book have been deleted successfully!'});
+    });
+}
+
+exports.getBookByParam = function(req, res) {
+    const param = req.query;
+    Book.find();
+}
